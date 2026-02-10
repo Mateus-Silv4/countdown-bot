@@ -2,100 +2,79 @@
 
 Sistema automatizado de contagem regressiva com lembretes pelo Telegram até 26/09/2026.
 
-## 📊 Cronograma de Lembretes
+## Cronograma de Lembretes
 
 | Período | Frequência | Notificação |
 |---------|------------|-------------|
-| Mais de 2 meses | Mensal | A cada novo mês |
-| 1-2 meses | Mensal | A cada novo mês |
-| Menos de 2 meses | Semanal | A cada semana |
-| Menos de 1 mês | Diário | Todos os dias |
+| Mais de 30 dias | Mensal | A cada novo mês |
+| 8-30 dias | Semanal | Toda segunda-feira |
+| 1-7 dias | Diário | Todos os dias às 10:30 |
 
-## 🚀 Instalação e Configuração
+## Tecnologias
 
-### 1. Instalar dependências
-```bash
-pip install -r requirements.txt
-```
+- **Node.js** (Vercel Serverless Functions)
+- **Telegram Bot API** (webhook)
+- **Deploy**: Vercel
 
-### 2. Configurar Telegram
+## Como Funciona
 
-**Criar um bot:**
-1. Fale com @BotFather no Telegram
-2. Envie `/newbot`
-3. Siga as instruções e copie o TOKEN
+1. O bot responde ao comando `/diasrestantes` no Telegram
+2. O webhook recebe atualizações e processa comandos
+3. Lembretes são verificados automaticamente a cada requisição
 
-**Obter Chat ID:**
-1. Adicione o bot ao seu grupo
-2. Envie uma mensagem para o bot
-3. Acesse: `https://api.telegram.org/bot<TOKEN>/getUpdates`
-4. Copie o `id` do chat
+## Comandos do Bot
 
-### 3. Editar configurações
+- `/start` - Inicia o bot
+- `/diasrestantes` - Mostra contagem regressiva completa
+- Respostas automáticas para perguntas sobre "quantos dias faltam"
 
-Edite `countdown/config.py`:
-```python
-TELEGRAM_TOKEN = "SEU_TOKEN_AQUI"
-TELEGRAM_CHAT_ID = "SEU_CHAT_ID_AQUI"
-```
+## Deploy na Vercel
 
-### 4. Testar o sistema
+### Configuração
 
-```bash
-# Ver status atual
-python countdown/main.py --status
+1. Fork ou clone este repositório
+2. Importe no Vercel: https://vercel.com/new
+3. Configure as variáveis de ambiente:
+   - `TELEGRAM_TOKEN` - Token do seu bot
+   - `CHAT_ID` - ID do grupo (começa com -100)
 
-# Enviar notificação de teste
-python countdown/main.py --notify
-```
-
-## ⚙️ Automação com Cron
-
-### Configurar execução automática
-```bash
-python setup_cron.py
-```
-
-O sistema verificará automaticamente a cada 6 horas e enviará lembretes conforme necessário.
-
-### Comandos úteis
-```bash
-crontab -l                  # Ver cron configurado
-tail -f /tmp/countdown.log  # Ver logs de execução
-```
-
-## 📁 Estrutura do Projeto
-
-```
-countdown/
-├── __init__.py        # Inicialização do módulo
-├── config.py          # Configurações (TOKEN, CHAT_ID)
-├── countdown.py       # Lógica de contagem regressiva
-├── telegram_bot.py    # Integração com Telegram
-└── main.py            # Script principal
-
-requirements.txt       # Dependências Python
-setup_cron.py         # Configuração do cron
-install.py            # Instalador interativo
-run_reminder.py       # Script manual de lembretes
-```
-
-## 💡 Uso Manual
+### Configurar Webhook
 
 ```bash
-# Verificar e enviar lembrete se necessário
-python countdown/main.py --check
-
-# Enviar notificação imediata
-python countdown/main.py --notify
-
-# Ver apenas status
-python countdown/main.py --status
-
-# Executar instalador interativo
-python install.py
+curl -X POST "https://api.telegram.org/bot<TOKEN>/setWebhook?url=https://SEU-PROJETO.vercel.app/api/index"
 ```
 
-## 📅 Data Alvo
+### Verificar Webhook
 
-**26/09/2026 às 10:30**
+```bash
+curl "https://api.telegram.org/bot<TOKEN>/getWebhookInfo"
+```
+
+## Estrutura do Projeto
+
+```
+├── api/
+│   └── index.js        # Função principal do bot (Vercel)
+├── package.json        # Dependências Node.js
+└── vercel.json        # Configuração Vercel
+```
+
+## Variáveis de Ambiente
+
+Configure no painel Vercel (Settings → Environment Variables):
+
+| Variável | Valor |
+|----------|-------|
+| TELEGRAM_TOKEN | Token do bot do Telegram |
+| CHAT_ID | ID do grupo (ex: -1003805251186) |
+
+## Teste Local
+
+```bash
+npm install
+npm run dev
+```
+
+## Data Alvo
+
+**26/09/2026 às 10:30** (Fuso: America/Fortaleza)
