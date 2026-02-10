@@ -3,8 +3,8 @@ const { Telegraf, Markup, session } = require('telegraf');
 const cron = require('node-cron');
 
 const CONFIG = {
-  TELEGRAM_TOKEN: process.env.TELEGRAM_TOKEN || '8597586648:AAE4mFpC5w8_SQfshmmFXXXv34SaRISYohU',
-  CHAT_ID: process.env.CHAT_ID || '-1003805251186',
+  TELEGRAM_TOKEN: process.env.TELEGRAM_TOKEN,
+  CHAT_ID: process.env.CHAT_ID,
   WEDDING_DATE: new Date('2026-09-26T10:30:00-03:00'),
   TIMEZONE: 'America/Fortaleza'
 };
