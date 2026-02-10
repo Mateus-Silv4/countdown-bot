@@ -66,7 +66,7 @@ Configure no painel Vercel (Settings → Environment Variables):
 | Variável | Valor |
 |----------|-------|
 | TELEGRAM_TOKEN | Token do bot do Telegram |
-| CHAT_ID | ID do grupo (ex: -1003805251186) |
+| CHAT_ID | ID do grupo (ex: -1003805251) |
 
 ## Teste Local
 
