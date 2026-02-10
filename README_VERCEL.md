@@ -17,7 +17,7 @@
 | Variável | Valor |
 |----------|-------|
 | `TELEGRAM_TOKEN` | Token do seu bot (@BotFather) |
-| `CHAT_ID` | ID do grupo (ex: -1003805251186) |
+| `CHAT_ID` | ID do grupo (ex: -10038373251186) |
 
 ### Passo 3: Configurar o Webhook do Telegram
 
