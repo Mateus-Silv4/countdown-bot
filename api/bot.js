@@ -31,7 +31,10 @@ function getAutoReminderMessage() {
   const info = getTimeRemaining();
   if (info.expired) return null;
 
-  const now = new Date();
+  const now = new Date(
+  new Date().toLocaleString("en-US", { timeZone: "America/Fortaleza" })
+  );
+
   const dayOfMonth = now.getDate();
   const dayOfWeek = now.getDay(); // 1 é Segunda-feira
   const days = info.totalDays;
