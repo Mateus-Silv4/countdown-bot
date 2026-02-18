@@ -41,7 +41,7 @@ function buildQuickReplyMessage() {
   const info = getTimeRemaining();
   const countdown = formatCountdown(info);
   
-  return `💕 <b>Contagem do Amor</b>\n\n⏰ <b>` + countdown + `</b> para o grande momento!\n\n📅 Data: 26/09/2026 às 10:30 (Fortaleza)\n📆 Dias totais: ` + info.totalDays + `\n\n💍❤️ Mal podemos esperar! ❤️💍`;
+  return `💕 <b>Contagem do Amor</b>\n\n⏰ <b>${countdown}</b> para o grande momento!\n\n📅 Data: 26/09/2026 às 10:30 (Fortaleza)\n📆 Dias totais: ${info.totalDays} \n\n💍❤️ Mal podemos esperar! ❤️💍`;
 }
 
 function buildCountdownMessage(phase) {
