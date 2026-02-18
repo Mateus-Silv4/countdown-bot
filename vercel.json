@@ -6,7 +6,7 @@
     },
     {
       "path": "/api/bot",
-      "schedule": "00 23 * * *"
+      "schedule": "00 15 * * *"
     }
   ]
 }

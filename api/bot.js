@@ -40,12 +40,12 @@ function getAutoReminderMessage() {
   const days = info.totalDays;
 
   // 1. Mais de 30 dias: Mensal (Todo dia 01)
-  if (days > 30 && dayOfMonth === 1) {
+  if (days > 30 && dayOfMonth === 26) {
     return `📆 <b>Mais um mês se passou!</b>\n\nFaltam <b>${days} dias</b> para o nosso casamento. O tempo está voando! ✨`;
   }
 
   // 2. Entre 8 e 30 dias: Semanal (Toda Segunda-feira)
-  if (days > 7 && days <= 30 && dayOfWeek === 1) {
+  if (days > 7 && days <= 30 && dayOfWeek === 1 && dayOfMonth !== 26) {
     return `📅 <b>Contagem Semanal!</b>\n\nEstamos na reta final! Apenas <b>${days} dias</b> restantes para o nosso "Sim". 💍`;
   }
 
@@ -54,7 +54,7 @@ function getAutoReminderMessage() {
     return `🔥 <b>CONTAGEM REGRESSIVA FINAL!</b>\n\nFaltam apenas <b>${days} dias</b>! Coração a mil! ❤️💍`;
   }
 
-  return null; // Não envia nada se não encaixar nos critérios
+  return `💖 <b>Bom dia!</b>\n\nA nossa jornada continua: faltam <b>${days} dias</b> para o grande momento! ⏳💍`;
 }
 
 let bot = null;
